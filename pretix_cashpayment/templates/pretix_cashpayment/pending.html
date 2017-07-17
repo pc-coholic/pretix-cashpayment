@@ -1,0 +1,14 @@
+{% load i18n %}
+{% load l10n %}
+
+<p>{% blocktrans trimmed %}
+    Please print out this page and bring it with you when paying.
+{% endblocktrans %}</p>
+
+<address>
+    {{ information_text|linebreaksbr }}<br />
+    <br />
+    {% trans "Amount:" %} {{ order.total|localize }} {{ event.currency }}<br />
+    <strong>{% trans "Reference code (important):" %} {{ order.full_code }}</strong><br />
+    <img class="img-responsive center-block" src="{{ qrcode }}" />
+</address>

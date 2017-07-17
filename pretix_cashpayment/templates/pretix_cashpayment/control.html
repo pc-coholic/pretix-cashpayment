@@ -1,0 +1,31 @@
+{% load i18n %}
+
+{% if payment_info and order.status == "p" %}
+    <p>{% blocktrans trimmed %}
+        This order has been paid via Cash Payment.
+    {% endblocktrans %}</p>
+
+    <dl class="dl-horizontal">
+        <dt>{% trans "Payer" %}</dt>
+        <dd>{{ payment_info.payer }}</dd>
+        <dt>{% trans "Payment date" %}</dt>
+        <dd>{{ payment_info.date }}</dd>
+        <dt>{% trans "Reference" %}</dt>
+        <dd>{{ payment_info.reference }}</dd>
+    </dl>
+{% else %}
+    {% if order.status == "p" %}
+        <p>{% blocktrans trimmed %}
+            This order has been marked as paid via Cash Payment manually.
+        {% endblocktrans %}</p>
+    {% else %}
+        <p>{% blocktrans trimmed %}
+            This order has been planned to be paid via Cash Payment, but no payment has been received yet.
+        {% endblocktrans %}</p>
+    {% endif %}
+    <dl class="dl-horizontal">
+        <dt>{% trans "Reference code" %}</dt>
+        <dd>{{ order.full_code }}</dd>
+    </dl>
+{% endif %}
+

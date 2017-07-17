@@ -1,0 +1,79 @@
+#: pretix_cashpayment/__init__.py:9 pretix_cashpayment/payment.py:14
+msgid "Cash Payment"
+msgstr "Barzahlung"
+
+#: pretix_cashpayment/__init__.py:11
+msgid ""
+"This plugin allows you to offer your customers a \"pay with cash at the venue"
+"\" option."
+msgstr ""
+"Dieses Plugin ermöglicht es Ihnen, Ihren Kunden die Barzahlung vor Ort "
+"anzubieten"
+
+#: pretix_cashpayment/payment.py:19
+msgid "Payment information text"
+msgstr "Informationstext zur Zahlungsart"
+
+#: pretix_cashpayment/signals.py:13
+msgid "You can pay your order by cash at the venue."
+msgstr "Sie können Ihre Bestellung vor Ort in Bar bezahlen."
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:4
+msgid "This order has been paid via Cash Payment."
+msgstr "Diese Bestellung wurde in Bar bezahlt."
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:9
+msgid "Payer"
+msgstr "Zahlender"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:11
+msgid "Payment date"
+msgstr "Zahlungsdatum"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:13
+msgid "Reference"
+msgstr "Verwendungszweck"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:18
+msgid "This order has been marked as paid via Cash Payment manually."
+msgstr "Diese Bezahlung wurde manuell als per Barzahlung bezahlt markiert"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:22
+msgid ""
+"This order has been planned to be paid via Cash Payment, but no payment has "
+"been received yet."
+msgstr ""
+"Diese Bestellung soll in Bar bezahlt werden, aber noch ist "
+"keine Zahlung eingegangen."
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:27
+msgid "Reference code"
+msgstr "Verwendungszweck"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/email/order_pending.txt:1
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Reference: %(code)s\n"
+"Amount: %(total)s %(currency)s\n"
+"%(additional_details)s"
+msgstr ""
+"\n"
+"\n"
+"Verwendungszweck: %(code)s\n"
+"\n"
+"Betrag: %(total)s %(currency)s\n"
+"%(additional_details)s"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/pending.html:4
+msgid "Please print out this page and bring it with you when paying."
+msgstr "Bitte drucken Sie diese Seite aus und bringen Sie diese beim Bezahlen mit."
+
+#: pretix_cashpayment/templates/pretix_cashpayment/pending.html:11
+msgid "Amount:"
+msgstr "Betrag:"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/pending.html:12
+msgid "Reference code (important):"
+msgstr "Verwendungszweck (wichtig):"
