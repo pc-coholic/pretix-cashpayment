@@ -1,6 +1,12 @@
 Pretix Cash Payment plugin
 ==========================
 
+.. image:: https://img.shields.io/pypi/v/pretix-cashpayment.svg
+   :target: https://pypi.python.org/pypi/pretix-cashpayment
+
+.. image:: https://img.shields.io/badge/translations-POEditor.com-blue.svg
+   :target: https://poeditor.com/join/project/5aFqmrdbz3
+
 This is a plugin for `pretix`_.
 
 Upon installation and activiation, you will be able to offer your clients a "Cash Payment"-option. This might be useful if you still want to sell tickets ahead of your event but the time to process payment transactions like SEPA-transfers is too long and/or payment via (credit) card processors is not possible or desired.
