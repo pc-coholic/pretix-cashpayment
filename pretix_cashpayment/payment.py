@@ -51,13 +51,16 @@ class CashPayment(BasePaymentProvider):
         return template.render(ctx)
 
     def order_pending_render(self, request, order) -> str:
+        if 'pretix_cashpoint' in self.event.get_plugins():
+            qrcode = segno.make_qr(order.full_code, error='H').png_data_uri(scale=10, border=0)
+        else:
+            qrcode = None
         template = get_template('pretix_cashpayment/pending.html')
         ctx = {
             'event': self.event,
             'order': order,
             'information_text': self.settings.get('information_text', as_type=LazyI18nString),
-            'qrcode': segno.make_qr(order.full_code, error='H')
-                            .png_data_uri(scale=10, border=0),
+            'qrcode': qrcode,
         }
         return template.render(ctx)
 
