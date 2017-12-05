@@ -25,7 +25,7 @@ cmdclass = {
 
 setup(
     name='pretix-cashpayment',
-    version='1.0.1',
+    version='1.0.2',
     description='pretix plugin that allows you to offer your customers a "pay with cash at the venue" option.',
     long_description=long_description,
     url='http://www.github.com/pc-coholic/pretix-cashpayment',
