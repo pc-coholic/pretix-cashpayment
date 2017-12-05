@@ -1,4 +1,4 @@
-{% load i18n %}{% load l10n %}{% blocktrans with information_text=information_text code=order.full_code total=order.total|localize currency=event.currency %}
+{% load i18n %}{% load l10n %}{% blocktrans with additional_details=information_text code=order.full_code total=order.total|localize currency=event.currency %}
 
 Reference: {{ code }}
 Amount: {{ total }} {{ currency }}
