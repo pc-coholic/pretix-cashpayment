@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: pretix-cashpayment\n"
 "Language: pt-br\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);"
 
 #: pretix_cashpayment/__init__.py:9 pretix_cashpayment/payment.py:14
 msgid "Cash Payment"
