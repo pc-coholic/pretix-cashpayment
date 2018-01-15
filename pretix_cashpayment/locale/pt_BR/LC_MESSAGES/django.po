@@ -1,0 +1,77 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: pretix-cashpayment\n"
+"Language: pt-br\n"
+
+#: pretix_cashpayment/__init__.py:9 pretix_cashpayment/payment.py:14
+msgid "Cash Payment"
+msgstr "Cash Payment"
+
+#: pretix_cashpayment/__init__.py:11
+msgid "This plugin allows you to offer your customers a \"pay with cash at the venue\" option."
+msgstr "This plugin allows you to offer your customers a \"pay with cash at the venue\" option."
+
+#: pretix_cashpayment/payment.py:19
+msgid "Payment information text"
+msgstr "Payment information text"
+
+#: pretix_cashpayment/signals.py:13
+msgid "You can pay your order by cash at the venue."
+msgstr "You can pay your order by cash at the venue."
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:4
+msgid "This order has been paid via Cash Payment."
+msgstr "This order has been paid via Cash Payment."
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:9
+msgid "Payer"
+msgstr "Payer"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:11
+msgid "Payment date"
+msgstr "Payment date"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:13
+msgid "Reference"
+msgstr "Reference"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:18
+msgid "This order has been marked as paid via Cash Payment manually."
+msgstr "This order has been marked as paid via Cash Payment manually."
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:22
+msgid "This order has been planned to be paid via Cash Payment, but no payment has been received yet."
+msgstr "This order has been planned to be paid via Cash Payment, but no payment has been received yet."
+
+#: pretix_cashpayment/templates/pretix_cashpayment/control.html:27
+msgid "Reference code"
+msgstr "Reference code"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/email/order_pending.txt:1
+msgid "\n"
+"\n"
+"Reference: %(code)s\n"
+"Amount: %(total)s %(currency)s\n"
+"%(additional_details)s"
+msgstr "\n"
+"\n"
+"Reference: %(code)s\n"
+"Amount: %(total)s %(currency)s\n"
+"%(additional_details)s"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/pending.html:4
+msgid "Please print out this page and bring it with you when paying."
+msgstr "Please print out this page and bring it with you when paying."
+
+#: pretix_cashpayment/templates/pretix_cashpayment/pending.html:11
+msgid "Amount:"
+msgstr "Amount:"
+
+#: pretix_cashpayment/templates/pretix_cashpayment/pending.html:12
+msgid "Reference code (important):"
+msgstr "Reference code (important):"
+
