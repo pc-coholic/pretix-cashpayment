@@ -28,6 +28,10 @@ Production setup - pip method
 
 5. Restart your pretix processes: ``systemctl restart pretix-web pretix-worker``
 
+
+     Note for Docker users:
+     There seems to be a problem, where running the ``pip install``-command in your Docker-file will result with a ``No module named 'production_settings'``-message. There are however `two available workarounds`_.
+
 Production setup - installation from git
 ----------------------------------------
 
@@ -62,3 +66,4 @@ Released under the terms of the Apache License 2.0
 .. _pretix development setup: https://docs.pretix.eu/en/latest/development/setup.html
 .. _pretix-cashpoint: https://github.com/pc-coholic/pretix-cashpoint
 .. _de.pccoholic.pretix.cashpoint: https://github.com/pc-coholic/de.pccoholic.pretix.cashpoint
+.. _two available workarounds: https://github.com/pc-coholic/pretix-cashpayment/issues/5#issuecomment-382447489
