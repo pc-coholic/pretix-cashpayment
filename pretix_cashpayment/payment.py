@@ -1,23 +1,26 @@
-import json
-import segno
 from collections import OrderedDict
 
+import segno
+from django.http import HttpRequest
 from django.template.loader import get_template
 from django.utils.translation import ugettext_lazy as _
 from i18nfield.fields import I18nFormField, I18nTextarea
 from i18nfield.strings import LazyI18nString
 
+from pretix.base.models import OrderPayment
 from pretix.base.payment import BasePaymentProvider
+
 
 class CashPayment(BasePaymentProvider):
     identifier = 'cashpayment'
-    verbose_name =_('Cash Payment')
+    verbose_name = _('Cash Payment')
+    abort_pending_allowed = True
 
     @property
     def settings_form_fields(self):
         form_field = I18nFormField(
-            label = _('Payment information text'),
-            widget = I18nTextarea,
+            label=_('Payment information text'),
+            widget=I18nTextarea,
         )
         return OrderedDict(
             list(super().settings_form_fields.items()) + [('information_text', form_field)]
@@ -50,26 +53,22 @@ class CashPayment(BasePaymentProvider):
         }
         return template.render(ctx)
 
-    def order_pending_render(self, request, order) -> str:
+    def payment_pending_render(self, request: HttpRequest, payment: OrderPayment):
         if 'pretix_cashpoint' in self.event.get_plugins():
-            qrcode = segno.make_qr(order.full_code, error='H').png_data_uri(scale=10, border=0)
+            qrcode = segno.make_qr(payment.order.full_code, error='H').png_data_uri(scale=10, border=0)
         else:
             qrcode = None
         template = get_template('pretix_cashpayment/pending.html')
         ctx = {
             'event': self.event,
-            'order': order,
+            'order': payment.order,
             'information_text': self.settings.get('information_text', as_type=LazyI18nString),
             'qrcode': qrcode,
         }
         return template.render(ctx)
 
-    def order_control_render(self, request, order) -> str:
-        if order.payment_info:
-            payment_info = json.loads(order.payment_info)
-        else:
-            payment_info = None
+    def payment_control_render(self, request: HttpRequest, payment: OrderPayment):
         template = get_template('pretix_cashpayment/control.html')
         ctx = {'request': request, 'event': self.event,
-               'payment_info': payment_info, 'order': order}
+               'payment_info': payment.info_data, 'order': payment.order}
         return template.render(ctx)
