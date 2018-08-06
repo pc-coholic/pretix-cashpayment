@@ -15,6 +15,14 @@ In the plugin settings you can set a custom text which will not only be displaye
 
 Please note, that you will have to mark the orders as payed by hand using the pretix backend. You may also - at your own risk - use the `pretix-cashpoint`_ in conjunction with the `de.pccoholic.pretix.cashpoint`_ android app to mark tickets as payed.
 
+Compatibility
+-------------
+As major versions in pretix tend to also include major changes, compatibility can be difficult to maintain.
+
+In order to make things simpler, the versioning of this plugin is also orienting itself on the versioning of pretix.
+
+On other words: If you are running pretix 1.x, you should only install this plugin in a 1.x-version. The 2.x-version *might* work just fine, but is implementing pretix 2.x-functionality, which might not be available on legacy systems or might even break it.
+
 Production setup - pip method
 -----------------------------
 
@@ -57,7 +65,7 @@ Development setup
 License
 -------
 
-Copyright 2017 Martin Gross
+Copyright 2018 Martin Gross
 
 Released under the terms of the Apache License 2.0
 

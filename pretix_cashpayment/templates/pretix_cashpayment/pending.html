@@ -10,7 +10,4 @@
     <br />
     {% trans "Amount:" %} {{ order.total|localize }} {{ event.currency }}<br />
     <strong>{% trans "Reference code (important):" %} {{ order.full_code }}</strong><br />
-    {% if qrcode %}
-        <img class="img-responsive center-block" src="{{ qrcode }}" />
-    {% endif %}
 </address>

@@ -1,6 +1,5 @@
 from collections import OrderedDict
 
-import segno
 from django.http import HttpRequest
 from django.template.loader import get_template
 from django.utils.translation import ugettext_lazy as _
@@ -54,16 +53,11 @@ class CashPayment(BasePaymentProvider):
         return template.render(ctx)
 
     def payment_pending_render(self, request: HttpRequest, payment: OrderPayment):
-        if 'pretix_cashpoint' in self.event.get_plugins():
-            qrcode = segno.make_qr(payment.order.full_code, error='H').png_data_uri(scale=10, border=0)
-        else:
-            qrcode = None
         template = get_template('pretix_cashpayment/pending.html')
         ctx = {
             'event': self.event,
             'order': payment.order,
             'information_text': self.settings.get('information_text', as_type=LazyI18nString),
-            'qrcode': qrcode,
         }
         return template.render(ctx)
 
