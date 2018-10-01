@@ -23,6 +23,8 @@ In order to make things simpler, the versioning of this plugin is also orienting
 
 On other words: If you are running pretix 1.x, you should only install this plugin in a 1.x-version. The 2.x-version *might* work just fine, but is implementing pretix 2.x-functionality, which might not be available on legacy systems or might even break it.
 
+To install the latest 1.x-version, using ``pip``, please use ``pip install "pretix-cashpayment<2.0"``
+
 Production setup - pip method
 -----------------------------
 
