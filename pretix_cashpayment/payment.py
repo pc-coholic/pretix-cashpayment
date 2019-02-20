@@ -16,6 +16,11 @@ class CashPayment(BasePaymentProvider):
     abort_pending_allowed = True
 
     @property
+    def test_mode_message(self):
+        return _('In test mode, you can just manually mark this order as paid in the backend after it has been '
+                 'created.')
+
+    @property
     def settings_form_fields(self):
         form_field = I18nFormField(
             label=_('Payment information text'),
