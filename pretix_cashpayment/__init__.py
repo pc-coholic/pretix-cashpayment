@@ -9,6 +9,7 @@ class PluginApp(AppConfig):
         name = _('Cash Payment')
         author = 'Martin Gross'
         description = _('This plugin allows you to offer your customers a "pay with cash at the venue" option.')
+        category = 'PAYMENT'
         visible = True
         version = '2.0.1'
 
