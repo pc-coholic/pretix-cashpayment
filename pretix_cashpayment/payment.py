@@ -2,7 +2,7 @@ from collections import OrderedDict
 
 from django.http import HttpRequest
 from django.template.loader import get_template
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from i18nfield.fields import I18nFormField, I18nTextarea
 from i18nfield.strings import LazyI18nString
 
@@ -14,6 +14,11 @@ class CashPayment(BasePaymentProvider):
     identifier = 'cashpayment'
     verbose_name = _('Cash Payment')
     abort_pending_allowed = True
+
+    @property
+    def test_mode_message(self):
+        return _('In test mode, you can just manually mark this order as paid in the backend after it has been '
+                 'created.')
 
     @property
     def settings_form_fields(self):
