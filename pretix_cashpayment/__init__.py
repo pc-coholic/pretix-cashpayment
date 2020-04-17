@@ -11,7 +11,7 @@ class PluginApp(AppConfig):
         description = _('This plugin allows you to offer your customers a "pay with cash at the venue" option.')
         category = 'PAYMENT'
         visible = True
-        version = '2.0.1'
+        version = '2.0.2'
 
     def ready(self):
         from . import signals  # NOQA
