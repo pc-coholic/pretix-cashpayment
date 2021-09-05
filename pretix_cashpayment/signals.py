@@ -1,6 +1,5 @@
 from django.dispatch import receiver
-from pretix.base.settings import settings_hierarkey
-from django.utils.translation import gettext_lazy as _, gettext_noop
+from django.utils.translation import gettext_noop
 from i18nfield.strings import LazyI18nString
 from rest_framework import serializers
 
