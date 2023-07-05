@@ -1,12 +1,19 @@
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-29 20:53+0100\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 3.0\n"
 
-#: pretix_cashpayment/__init__.py:9 pretix_cashpayment/payment.py:14
+#: pretix_cashpayment/__init__.py:9 pretix_cashpayment/payment.py:15
 msgid "Cash Payment"
 msgstr "Barzahlung"
 
@@ -18,11 +25,21 @@ msgstr ""
 "Dieses Plugin ermöglicht es dir, deinen Kunden die Barzahlung vor Ort "
 "anzubieten"
 
-#: pretix_cashpayment/payment.py:19
+#: pretix_cashpayment/payment.py:17
+msgid "Confirm"
+msgstr "Bestätigen"
+
+#: pretix_cashpayment/payment.py:21
+msgid ""
+"In test mode, you can just manually mark this order as paid in the backend "
+"after it has been created."
+msgstr ""
+
+#: pretix_cashpayment/payment.py:27
 msgid "Payment information text"
 msgstr "Informationstext zur Zahlungsart"
 
-#: pretix_cashpayment/signals.py:13
+#: pretix_cashpayment/signals.py:24
 msgid "You can pay your order by cash at the venue."
 msgstr "Du kannst deine Bestellung vor Ort in Bar bezahlen."
 
@@ -51,8 +68,8 @@ msgid ""
 "This order has been planned to be paid via Cash Payment, but no payment has "
 "been received yet."
 msgstr ""
-"Diese Bestellung soll in Bar bezahlt werden, aber noch ist "
-"keine Zahlung eingegangen."
+"Diese Bestellung soll in Bar bezahlt werden, aber noch ist keine Zahlung "
+"eingegangen."
 
 #: pretix_cashpayment/templates/pretix_cashpayment/control.html:27
 msgid "Reference code"

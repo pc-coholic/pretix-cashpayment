@@ -3,6 +3,7 @@ from distutils.command.build import build
 
 from django.core import management
 from setuptools import setup, find_packages
+from pretix_cashpayment import __version__
 
 
 try:
@@ -25,7 +26,7 @@ cmdclass = {
 
 setup(
     name='pretix-cashpayment',
-    version='2.0.2',
+    version=__version__,
     description='pretix plugin that allows you to offer your customers a "pay with cash at the venue" option.',
     long_description=long_description,
     url='http://www.github.com/pc-coholic/pretix-cashpayment',

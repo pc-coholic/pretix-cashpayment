@@ -1,5 +1,6 @@
 {% load i18n %}
+{% load rich_text %}
 
 <address>
-    {{ information_text|linebreaksbr }}<br>
+    {{ information_text|rich_text }}<br>
 </address>

@@ -14,6 +14,7 @@ class CashPayment(BasePaymentProvider):
     identifier = 'cashpayment'
     verbose_name = _('Cash Payment')
     abort_pending_allowed = True
+    confirm_button_name = _('Confirm')
 
     @property
     def test_mode_message(self):
