@@ -3,7 +3,7 @@ from collections import OrderedDict
 from django.http import HttpRequest
 from django.template.loader import get_template
 from django.utils.translation import gettext_lazy as _
-from i18nfield.fields import I18nFormField, I18nTextarea
+from i18nfield.fields import I18nFormField, I18nTextarea, I18nTextInput
 from i18nfield.strings import LazyI18nString
 
 from pretix.base.models import OrderPayment
@@ -20,15 +20,31 @@ class CashPayment(BasePaymentProvider):
     def test_mode_message(self):
         return _('In test mode, you can just manually mark this order as paid in the backend after it has been '
                  'created.')
+    
+    @property
+    def public_name(self) -> str:
+        return str(self.settings.get("public_name", as_type=LazyI18nString) or _(
+            "Cash Payment"
+        ))
 
     @property
     def settings_form_fields(self):
-        form_field = I18nFormField(
-            label=_('Payment information text'),
-            widget=I18nTextarea,
-        )
+        fields = [
+            (
+                "public_name",
+                I18nFormField(
+                    label=_("Payment method name"), widget=I18nTextInput, required=False
+                ),
+            ),
+            (
+                "information_text",
+                I18nFormField(
+                    label=_('Payment information text'),widget=I18nTextarea,
+                ),
+            ),
+        ]
         return OrderedDict(
-            list(super().settings_form_fields.items()) + [('information_text', form_field)]
+            list(super().settings_form_fields.items()) + fields
         )
 
     def payment_form_render(self, request) -> str:
