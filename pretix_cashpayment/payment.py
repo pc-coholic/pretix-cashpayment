@@ -1,13 +1,20 @@
-from collections import OrderedDict
+from collections import OrderedDict, namedtuple
+from datetime import datetime, time, timedelta
+from zoneinfo import ZoneInfo
 
 from django.http import HttpRequest
 from django.template.loader import get_template
 from django.utils.translation import gettext_lazy as _
 from i18nfield.fields import I18nFormField, I18nTextarea, I18nTextInput
 from i18nfield.strings import LazyI18nString
+from django.utils.timezone import get_current_timezone, make_aware, now
 
-from pretix.base.models import OrderPayment
+from pretix.base.models import OrderPayment, Order, OrderPosition
 from pretix.base.payment import BasePaymentProvider
+from pretix.base.reldate import RelativeDateWrapper
+from pretix.base.reldate import ( 
+    RelativeDateTimeField, RelativeDateWrapper,
+)
 
 
 class CashPayment(BasePaymentProvider):
@@ -15,6 +22,7 @@ class CashPayment(BasePaymentProvider):
     verbose_name = _('Cash Payment')
     abort_pending_allowed = True
     confirm_button_name = _('Confirm')
+
 
     @property
     def test_mode_message(self):
@@ -41,6 +49,14 @@ class CashPayment(BasePaymentProvider):
                 I18nFormField(
                     label=_('Payment information text'),widget=I18nTextarea,
                 ),
+            ),
+            (
+                "provider_last_payment",
+                RelativeDateTimeField(
+                    required=False,
+                    label=_('Override order expiration date'),
+                    help_text=_('The order expiration date will only be changed by this setting if it is later than the date set for the event generally.'),
+                )
             ),
         ]
         return OrderedDict(
@@ -88,3 +104,33 @@ class CashPayment(BasePaymentProvider):
         ctx = {'request': request, 'event': self.event,
                'payment_info': payment.info_data, 'order': payment.order}
         return template.render(ctx)
+
+    def execute_payment(self, request: HttpRequest, payment: OrderPayment):
+        order = payment.order
+
+        custom_expires = self.settings.get("provider_last_payment", as_type=RelativeDateWrapper)
+        if custom_expires:
+            if self.event.has_subevents:
+                subevents = order.event.subevents.filter(id__in=order.positions.values_list('subevent_id', flat=True))
+            else:
+                subevents = None
+            self._set_custom_expires(order, custom_expires, subevents)
+    
+    def _set_custom_expires(self, order: Order, reldate: RelativeDateWrapper, subevents=None):
+        if reldate:
+            expiry_date = order.expires
+
+            if order.event.has_subevents and subevents:
+                terms = [
+                    reldate.datetime(se)
+                    for se in subevents
+                ]
+                if not terms:
+                    return
+                expiry_date = min(terms)
+            else:
+                expiry_date = reldate.datetime(order.event)
+            
+            if expiry_date > order.expires:
+                order.expires = expiry_date
+                order.save()
