@@ -1,21 +1,16 @@
 from collections import OrderedDict, namedtuple
 from datetime import datetime, time, timedelta
-from zoneinfo import ZoneInfo
-
 from django.http import HttpRequest
 from django.template.loader import get_template
+from django.utils.timezone import get_current_timezone, make_aware, now
 from django.utils.translation import gettext_lazy as _
 from i18nfield.fields import I18nFormField, I18nTextarea, I18nTextInput
 from i18nfield.strings import LazyI18nString
-from django.utils.timezone import get_current_timezone, make_aware, now
-
-from pretix.base.models import OrderPayment, Order, OrderPosition
 from pretix.base.forms import I18nMarkdownTextarea
+from pretix.base.models import Order, OrderPayment, OrderPosition
 from pretix.base.payment import BasePaymentProvider
-from pretix.base.reldate import RelativeDateWrapper
-from pretix.base.reldate import ( 
-    RelativeDateTimeField, RelativeDateWrapper,
-)
+from pretix.base.reldate import RelativeDateTimeField, RelativeDateWrapper
+from zoneinfo import ZoneInfo
 
 
 class CashPayment(BasePaymentProvider):
