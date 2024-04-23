@@ -10,6 +10,7 @@ from i18nfield.strings import LazyI18nString
 from django.utils.timezone import get_current_timezone, make_aware, now
 
 from pretix.base.models import OrderPayment, Order, OrderPosition
+from pretix.base.forms import I18nMarkdownTextarea
 from pretix.base.payment import BasePaymentProvider
 from pretix.base.reldate import RelativeDateWrapper
 from pretix.base.reldate import ( 
@@ -37,6 +38,7 @@ class CashPayment(BasePaymentProvider):
 
     @property
     def settings_form_fields(self):
+<<<<<<< HEAD
         fields = [
             (
                 "public_name",
@@ -59,6 +61,12 @@ class CashPayment(BasePaymentProvider):
                 )
             ),
         ]
+=======
+        form_field = I18nFormField(
+            label=_('Payment information text'),
+            widget=I18nMarkdownTextarea,
+        )
+>>>>>>> 4e967ce (Use I18nMarkdownTextarea)
         return OrderedDict(
             list(super().settings_form_fields.items()) + fields
         )
