@@ -33,7 +33,6 @@ class CashPayment(BasePaymentProvider):
 
     @property
     def settings_form_fields(self):
-<<<<<<< HEAD
         fields = [
             (
                 "public_name",
@@ -44,7 +43,7 @@ class CashPayment(BasePaymentProvider):
             (
                 "information_text",
                 I18nFormField(
-                    label=_('Payment information text'),widget=I18nTextarea,
+                    label=_('Payment information text'), widget=I18nMarkdownTextarea,
                 ),
             ),
             (
@@ -56,12 +55,6 @@ class CashPayment(BasePaymentProvider):
                 )
             ),
         ]
-=======
-        form_field = I18nFormField(
-            label=_('Payment information text'),
-            widget=I18nMarkdownTextarea,
-        )
->>>>>>> 4e967ce (Use I18nMarkdownTextarea)
         return OrderedDict(
             list(super().settings_form_fields.items()) + fields
         )
