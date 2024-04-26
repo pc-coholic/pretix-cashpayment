@@ -2,7 +2,7 @@
 [plugin]
 package = "pretix-cashpayment"
 modules = [ "pretix_cashpayment" ]
-marketplace_name = "adyen"
+marketplace_name = "cashpayment"
 pypi = true
 repository_servers = { origin = "github.com", gitlab = "code.rami.io" }
 tag_targets = [ "origin", "gitlab" ]
