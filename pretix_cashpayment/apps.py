@@ -1,6 +1,8 @@
 from django.apps import AppConfig
 from django.utils.translation import gettext_lazy as _
+
 from . import __version__
+
 
 class PluginApp(AppConfig):
     name = 'pretix_cashpayment'
@@ -13,6 +15,7 @@ class PluginApp(AppConfig):
         category = 'PAYMENT'
         visible = True
         version = __version__
+        compatibility = "pretix>=2024.4.0.dev0"
 
     def ready(self):
         from . import signals  # NOQA

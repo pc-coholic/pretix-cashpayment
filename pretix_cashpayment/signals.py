@@ -1,10 +1,11 @@
 from django.dispatch import receiver
 from django.utils.translation import gettext_noop
 from i18nfield.strings import LazyI18nString
-from rest_framework import serializers
-
 from pretix.base.settings import settings_hierarkey
-from pretix.base.signals import register_payment_providers, api_event_settings_fields
+from pretix.base.signals import (
+    api_event_settings_fields, register_payment_providers,
+)
+from rest_framework import serializers
 
 
 @receiver(register_payment_providers, dispatch_uid="payment_cash")
